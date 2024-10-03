@@ -2,7 +2,6 @@
 #include <memory>
 #include <string>
 
-// Базовий клас Weapon
 class Weapon {
 public:
     virtual ~Weapon() = default;
@@ -10,7 +9,6 @@ public:
     virtual std::string GetName() const = 0;
 };
 
-// Клас-нащадок Sword
 class Sword : public Weapon {
 public:
     float GetDamage() const override {
@@ -21,7 +19,6 @@ public:
     }
 };
 
-// Клас-нащадок Axe
 class Axe : public Weapon {
 public:
     float GetDamage() const override {
@@ -32,7 +29,6 @@ public:
     }
 };
 
-// Клас-нащадок Bow
 class Bow : public Weapon {
 public:
     float GetDamage() const override {
@@ -43,7 +39,6 @@ public:
     }
 };
 
-// Базовий клас Character
 class Character {
 public:
     void SetWeapon(std::unique_ptr<Weapon> new_weapon) {
@@ -63,22 +58,20 @@ int main() {
 
 
     int input;
+    std::cout << "Enter a value from 1 to 3\n";
     while (std::cin >> input) {
         switch (input) {
         case 1:
-            // Видаємо персонажу меч
             character.SetWeapon(std::make_unique<Sword>());
             std::cout << "Character has a " << character.GetWeapon()->GetName()
                 << " with damage " << character.GetWeapon()->GetDamage() << std::endl;
             break;
         case 2:
-            // Видаємо персонажу сокиру
             character.SetWeapon(std::make_unique<Axe>());
             std::cout << "Character has a " << character.GetWeapon()->GetName()
                 << " with damage " << character.GetWeapon()->GetDamage() << std::endl;
             break;
         case 3:
-            // Видаємо персонажу лук
             character.SetWeapon(std::make_unique<Bow>());
             std::cout << "Character has a " << character.GetWeapon()->GetName()
                 << " with damage " << character.GetWeapon()->GetDamage() << std::endl;
